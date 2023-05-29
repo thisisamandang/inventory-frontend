@@ -30,7 +30,6 @@ function LowStock({ user, lowStock }) {
   const desc = items.map((item) => item.description);
   console.log(items);
   return (
-    // <div>
     <>
       <div className="text-sm px-2 border">
         <p className="font-bold mb-4 ">Item Name</p>
@@ -94,7 +93,6 @@ function LowStock({ user, lowStock }) {
         </div>
       </div>
     </>
-    // </div>
   );
 }
 
