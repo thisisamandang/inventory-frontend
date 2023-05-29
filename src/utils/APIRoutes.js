@@ -1,5 +1,5 @@
-export const host = "https://inventory-server-half.onrender.com";
-// export const host = "http://localhost:5000";
+// export const host = "https://inventory-server-half.onrender.com";
+export const host = "http://localhost:5000";
 export const registerRoute = `${host}/api/auth/register`;
 export const loginRoute = `${host}/api/auth/login`;
 export const inventoryRoute = `${host}/api/inventory/additem`;

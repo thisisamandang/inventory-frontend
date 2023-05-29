@@ -58,8 +58,8 @@ function AddModal({ setModal }) {
       } catch (error) {
         console.log(error.message);
       }
+      setModal(false);
     }
-    setModal(false);
   };
 
   return (

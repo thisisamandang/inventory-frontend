@@ -2,65 +2,63 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { updateItem } from "../utils/APIRoutes";
-function UpdateModal({ setUpdationModal, updationCode, parsedData }) {
+function UpdateModal({
+  setUpdationModal,
+  updationCode,
+  parsedData,
+  updationCategory,
+  updationItemNames,
+  updationStocks,
+  updationDesc,
+}) {
   const inventory = localStorage.getItem("inventory");
   // eslint-disable-next-line no-redeclare
   var parsedData = JSON.parse(inventory);
-  // const [updationCode, setUpdationCode] = useState("");
-  const [productId, setProductId] = useState("");
-  const [category, setCategory] = useState("");
-  const [description, setDescription] = useState("");
+
   const [values, setValues] = useState({
-    itemName: parsedData.itemName,
-    category: parsedData.category,
+    // id: parsedData._id,
+    itemName: updationItemNames,
+    category: updationCategory,
     itemCode: parsedData.itemCode,
-    description: parsedData.description,
+    description: updationDesc,
     unit: parsedData.unit,
-    stocks: parsedData.stocks,
+    stocks: updationStocks,
     low: parsedData.low,
   });
+
+  // console.log("asd", updationItemNames);
+
   const handleChange = (event) => {
     setValues((prevData) => ({
       ...prevData,
       [event.target.name]: event.target.value,
     }));
-    console.log("asd", values);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const code = updationCode;
+    // const code = ids;
     const { user, itemName, category, description, unit, stocks, low } = values;
 
     const datas = {
-      updationCode: updationCode,
-      productId: code,
-      category: category,
+      UpdateditemName: itemName,
+      UpdatedCategory: category,
       description: description,
+      stocks: stocks,
     };
-    const updatedData = {
-      itemName,
-      category,
-      user,
-      description,
-      unit,
-      stocks,
-      low,
-    };
-    const { data } = await axios.post(`${updateItem}/${code}`, {
-      datas,
-    });
+
+    const { data } = await axios.put(`${updateItem}/${updationCode}`, datas);
 
     if (data.status === false) {
       toast.error(data.msg);
     }
-    if (data.status === true) {
-      try {
-        localStorage.setItem("inventory", JSON.stringify(data.inventory));
-      } catch (error) {
-        console.log(error.message);
-      }
-    }
+    // if (data.status === true) {
+    //   try {
+    //     localStorage.setItem("inventory", JSON.stringify(data.inventory));
+    //   } catch (error) {
+    //     console.log(error.message);
+    //   }
+    // }
     setUpdationModal(false);
   };
 
@@ -80,6 +78,7 @@ function UpdateModal({ setUpdationModal, updationCode, parsedData }) {
                 className="p-1 mt-5 outline-none border border-slate-400 rounded-md focus:border-blue-300"
                 onChange={handleChange}
               />
+
               <select
                 type="text"
                 value={values.category}
@@ -87,7 +86,7 @@ function UpdateModal({ setUpdationModal, updationCode, parsedData }) {
                 className="p-1 mt-5 w-auto outline-none  border-slate-400 border rounded-md focus:border-blue-300"
                 onChange={(e) => handleChange(e)}
               >
-                {category.map((item) => {
+                {Category.map((item) => {
                   return (
                     <option key={item} className=" text-black" value={item}>
                       {item}
@@ -160,6 +159,6 @@ function UpdateModal({ setUpdationModal, updationCode, parsedData }) {
     </div>
   );
 }
-const category = ["Panel", "Invertor", "Wire", "MC4 Connector", "Other"];
+const Category = ["Panel", "Invertor", "Wire", "MC4 Connector", "Other"];
 const Unit = ["PIECES(PCS)", "UNITS", "NUMBERS(NOS)"];
 export default UpdateModal;
