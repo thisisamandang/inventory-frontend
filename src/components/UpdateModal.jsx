@@ -38,7 +38,7 @@ function UpdateModal({
   const handleSubmit = async (event) => {
     event.preventDefault();
     // const code = ids;
-    const { user, itemName, category, description, unit, stocks, low } = values;
+    const { itemName, category, description, stocks } = values;
 
     const datas = {
       UpdateditemName: itemName,

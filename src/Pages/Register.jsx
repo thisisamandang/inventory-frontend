@@ -5,11 +5,11 @@ import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 function Register() {
   const navigate = useNavigate();
-  useEffect(() => {
-    if (localStorage.getItem("user")) {
-      navigate("/");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem("user")) {
+  //     navigate("/");
+  //   }
+  // }, []);
   const [values, setValues] = useState({
     username: "",
     email: "",

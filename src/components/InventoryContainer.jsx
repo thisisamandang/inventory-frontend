@@ -17,9 +17,14 @@ function InventoryContainer({ modal, lowStock }) {
   const [updationDesc, setUpdationDesc] = useState();
   const [updationCode, setUpdationCode] = useState();
   const [deletionCode, setDeletionCode] = useState();
-  const id = localStorage.getItem("user");
-  var parsedData = JSON.parse(id);
-  const user = parsedData.username;
+  const [user, setUser] = useState();
+  const [empty, setEmpty] = useState(false);
+  // useEffect(() => {
+  // const id = localStorage.getItem("user");
+  // var parsedData = JSON.parse(id);
+  // const user = parsedData.username;
+  // }, []);
+
   const deleteInfo = (code) => {
     setDeletionCode(code);
     setDeleteModal(true);
@@ -38,20 +43,24 @@ function InventoryContainer({ modal, lowStock }) {
   // const [Loading, setLoading] = useState(false);
   useEffect(() => {
     async function getItems() {
+      const id = localStorage.getItem("user");
+      var parsedData = JSON.parse(id);
+      const user = parsedData.username;
+      setUser(user);
       const data = await axios.get(`${getInventory}/${user}`);
       setItems(data.data);
-      // console.log(data);
-      // if (data.status === true) {
-      //   try {
-      //     localStorage.setItem("inventory", JSON.stringify(data.inventory));
-      //   } catch (error) {
-      //     console.log(error.message);
-      //   }
-      // }
+      console.log(data);
+      if (data.status === true) {
+        try {
+          localStorage.setItem("inventory", JSON.stringify(data.inventory));
+        } catch (error) {
+          console.log(error.message);
+        }
+      }
     }
     getItems();
     // setLoading(true);
-  }, [modal, user, deleteModal, updationModal]);
+  }, [modal, deleteModal, updationModal, user]);
   // console.log(items);
 
   const itemNames = items.map((item) => item.itemName);
@@ -59,7 +68,7 @@ function InventoryContainer({ modal, lowStock }) {
   const code = items.map((item) => item.itemCode);
   const unit = items.map((item) => item.unit);
   const stocks = items.map((item) => item.stocks);
-  const low = items.map((item) => item.low);
+
   const desc = items.map((item) => item.description);
   // const lowvstock = stocks.map((element, index) => {
   //   if (element < low[index]) {
@@ -85,7 +94,6 @@ function InventoryContainer({ modal, lowStock }) {
         <UpdateModal
           setUpdationModal={setUpdationModal}
           updationCode={updationCode}
-          parsedData={parsedData}
           items={items}
           updationCategory={updationCategory}
           updationItemNames={updationItemNames}

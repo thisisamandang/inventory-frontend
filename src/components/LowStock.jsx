@@ -19,7 +19,6 @@ function LowStock({ user, lowStock }) {
       // }
     }
     getItems();
-    // setLoading(true);
   }, [lowStock, user]);
   const itemNames = items.map((item) => item.itemName);
   const category = items.map((item) => item.category);
@@ -27,8 +26,7 @@ function LowStock({ user, lowStock }) {
   const unit = items.map((item) => item.unit);
   const stocks = items.map((item) => item.stocks);
   const low = items.map((item) => item.low);
-  const desc = items.map((item) => item.description);
-  console.log(items);
+  console.log(low);
   return (
     <>
       <div className="text-sm px-2 border">
@@ -81,7 +79,7 @@ function LowStock({ user, lowStock }) {
 
       <div className="text-sm px-2 border">
         <p className="font-bold text-center mb-4">Low</p>
-        <div className="p-4">
+        <div className="py-6 px-4">
           {code.map((code, index) => (
             <div>
               <AiOutlineWarning

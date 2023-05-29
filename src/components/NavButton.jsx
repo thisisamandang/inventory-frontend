@@ -1,5 +1,5 @@
 import React from "react";
-import HiOutlineLogout from "react-icons/hi";
+
 function NavButton({ onClick, title, icon }) {
   return (
     <button

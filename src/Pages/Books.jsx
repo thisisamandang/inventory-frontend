@@ -1,8 +1,8 @@
 import React from "react";
 import Header from "../components/Header";
-import axios from "axios";
+
 import { MdOutlineInventory } from "react-icons/md";
-import InventoryContainer from "../components/InventoryContainer";
+// import InventoryContainer from "../components/InventoryContainer";
 import Controls from "../components/Controls";
 function Books() {
   return (
