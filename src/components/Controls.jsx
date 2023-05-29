@@ -14,7 +14,7 @@ function Controls() {
 
   return (
     <>
-      <div className="flex justify-center gap-6 mt-6  md:gap-6 ">
+      <div className="flex justify-center gap-6 mt-6  md:gap-6 fade-on-appear">
         {modal && <AddModal setModal={setModal}></AddModal>}
         <div
           className={`${

@@ -5,6 +5,7 @@ import { BsPencil } from "react-icons/bs";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import DeleteModal from "./DeleteModal";
 import UpdateModal from "./UpdateModal";
+import LowStock from "./LowStock";
 
 function InventoryContainer({ modal, lowStock }) {
   const [items, setItems] = useState([]);
@@ -73,7 +74,7 @@ function InventoryContainer({ modal, lowStock }) {
   // }
 
   return (
-    <div className="flex mt-8 md:justify-center md:mr-10 mx-3">
+    <div className="flex justify-center mt-8 md:justify-center md:mr-10 mx-3 fade-on-appear">
       {deleteModal && (
         <DeleteModal
           setDeleteModal={setDeleteModal}
@@ -92,79 +93,85 @@ function InventoryContainer({ modal, lowStock }) {
           updationDesc={updationDesc}
         ></UpdateModal>
       )}
-      <div className="text-sm px-2 border ">
-        <p className="font-bold mb-4 ">Item Name</p>
+      {lowStock ? (
+        <LowStock user={user} updationInfo={updationInfo} lowStock={lowStock} />
+      ) : (
+        <>
+          <div className="text-sm px-2 border ">
+            <p className="font-bold mb-4 ">Item Name</p>
 
-        <div className="text-center p-4">
-          {itemNames.map((itemName, index) => (
-            <p className="py-2" key={index}>
-              {itemName}
-            </p>
-          ))}
-        </div>
-      </div>
-      <div className="text-sm px-2 border">
-        <p className="font-bold  mb-4">Item Code</p>
-        <div className="p-4">
-          {code.map((code, index) => (
-            <p className="py-2" key={index}>
-              {code}
-            </p>
-          ))}
-        </div>
-      </div>
-      <div className="text-sm px-2 border">
-        <p className="font-bold  mb-4">Category</p>
-        <div className="p-4">
-          {category.map((category, index) => (
-            <p className="py-2" key={index}>
-              {category}
-            </p>
-          ))}
-        </div>
-      </div>
+            <div className="text-center p-4">
+              {itemNames.map((itemName, index) => (
+                <p className="py-2" key={index}>
+                  {itemName}
+                </p>
+              ))}
+            </div>
+          </div>
+          <div className="text-sm px-2 border">
+            <p className="font-bold  mb-4">Item Code</p>
+            <div className="p-4">
+              {code.map((code, index) => (
+                <p className="py-2" key={index}>
+                  {code}
+                </p>
+              ))}
+            </div>
+          </div>
+          <div className="text-sm px-2 border">
+            <p className="font-bold  mb-4">Category</p>
+            <div className="p-4">
+              {category.map((category, index) => (
+                <p className="py-2" key={index}>
+                  {category}
+                </p>
+              ))}
+            </div>
+          </div>
 
-      <div className="text-sm px-2 border">
-        <p className="font-bold  mb-4">Stock Qty.</p>
-        <div className="p-4">
-          {stocks.map((stock, index) => (
-            <p className="py-2" key={index}>
-              {stock}
-            </p>
-          ))}
-          {unit.map((unit, index) => (
-            <p className="py-2" key={index}>
-              {unit}
-            </p>
-          ))}
-        </div>
-      </div>
+          <div className="text-sm px-2 border">
+            <p className="font-bold  mb-4">Stock Qty.</p>
+            <div className="p-4">
+              {stocks.map((stock, index) => (
+                <p className="py-2" key={index}>
+                  {stock}
+                </p>
+              ))}
+              {unit.map((unit, index) => (
+                <p className="py-2" key={index}>
+                  {unit}
+                </p>
+              ))}
+            </div>
+          </div>
 
-      <div className="text-sm px-2 border">
-        <p className="font-bold  mb-4">Actions</p>
-        <div className="p-4">
-          {code.map((code, index) => (
-            <p className="py-2" key={index}>
-              <BsPencil
-                className="inline mr-3 h-4 w-4 cursor-pointer"
-                onClick={() => {
-                  updationInfo(
-                    code,
-                    category[index],
-                    itemNames[index],
-                    stocks[index],
-                    desc[index]
-                  );
-                }}
-              />
-              <RiDeleteBin6Line
-                className="inline ml-3 h-4 w-4 text-red-600 cursor-pointer"
-                onClick={() => deleteInfo(code)}
-              />
-            </p>
-          ))}
-        </div>
-      </div>
+          <div className="text-sm px-2 border">
+            <p className="font-bold  mb-4">Actions</p>
+            <div className="p-4">
+              {code.map((code, index) => (
+                <p className="py-2" key={index}>
+                  <BsPencil
+                    className="inline mr-3 h-4 w-4 cursor-pointer"
+                    onClick={() => {
+                      updationInfo(
+                        code,
+                        category[index],
+                        itemNames[index],
+                        stocks[index],
+                        desc[index]
+                      );
+                    }}
+                  />
+                  <RiDeleteBin6Line
+                    className="inline ml-3 h-4 w-4 text-red-600 cursor-pointer"
+                    onClick={() => deleteInfo(code)}
+                  />
+                </p>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }

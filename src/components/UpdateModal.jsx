@@ -65,7 +65,7 @@ function UpdateModal({
   return (
     <div>
       <div className="backdrop" />
-      <div className="modal p-2">
+      <div className="modal p-2 fade-on-appear">
         <h1>UPDATE DATA</h1>
         <div className="flex flex-1 ">
           <div className="flex-col w-1/2 flex md:flex-row  border-r p-6">

@@ -60,7 +60,7 @@ function Register() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen text-center justify-center ">
+    <div className="flex fade-on-appear flex-col min-h-screen text-center justify-center ">
       <div className="md:flex md:justify-center ">
         <form
           onSubmit={(e) => handleSubmit(e)}

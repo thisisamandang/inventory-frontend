@@ -56,7 +56,7 @@ function Login() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen text-center justify-center ">
+    <div className="flex fade-on-appear flex-col min-h-screen text-center justify-center ">
       <div className="md:flex md:justify-center ">
         <form
           className="border gap-2 flex flex-col items-center  py-4 px-4 mx-6 md:w-3/6 md:h-4/5 rounded-md "

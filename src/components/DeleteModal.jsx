@@ -10,7 +10,7 @@ function DeleteModal({ setDeleteModal, deletionCode }) {
   return (
     <div>
       <div className="backdrop" />
-      <div className="modal p-2 ">
+      <div className="modal p-2 fade-on-appear">
         <p className="mb-4 p-4 text-center">
           Are you sure you want to Delete this entry?
         </p>

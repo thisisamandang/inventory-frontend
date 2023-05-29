@@ -3,10 +3,10 @@ import { inventoryRoute } from "../utils/APIRoutes";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 function AddModal({ setModal }) {
-  const [warning, setWarning] = useState(false);
+  const [lowWarning, setLowWarning] = useState(false);
   const handleWarning = (e) => {
     e.preventDefault();
-    setWarning(!warning);
+    setLowWarning(!lowWarning);
   };
   const id = localStorage.getItem("user");
   var parsedData = JSON.parse(id);
@@ -75,7 +75,7 @@ function AddModal({ setModal }) {
                 type="text"
                 placeholder="Item Name"
                 name="itemName"
-                className="p-1 mt-5 outline-none border border-slate-400 rounded-md focus:border-blue-300"
+                className="p-1 mt-5 w-9/12 outline-none border border-slate-400 rounded-md focus:border-blue-300"
                 onChange={(e) => handleChange(e)}
               />
               <select
@@ -97,18 +97,18 @@ function AddModal({ setModal }) {
                 type="number"
                 placeholder="Item Code"
                 name="itemCode"
-                className="p-1 mt-5 outline-none border border-slate-400 rounded-md focus:border-blue-300"
+                className="p-1 mt-5 w-9/12 outline-none border border-slate-400 rounded-md focus:border-blue-300"
                 onChange={(e) => handleChange(e)}
               />
               <input
                 type="text"
                 placeholder="Item Description"
                 name="description"
-                className="p-1 mt-5 h-1/3 outline-none border border-slate-400 mb-2 rounded-md focus:border-blue-300"
+                className="p-1 mt-5 h-1/3 w-11/12 outline-none border border-slate-400 mb-2 rounded-md focus:border-blue-300"
                 onChange={(e) => handleChange(e)}
               />
               <button
-                className="p-2 border border-sky-600 text-sky-600 rounded-md mx-1 hover:text-white hover:bg-sky-600 transition-all duration-300 mt-4"
+                className="p-2 border border-sky-600 text-sky-600 rounded-md mx-1 hover:text-white hover:bg-sky-600 transition-all duration-300 mt-8"
                 type="submit"
               >
                 Submit
@@ -121,7 +121,7 @@ function AddModal({ setModal }) {
               <select
                 type="text"
                 name="unit"
-                className="p-1 mt-5 w-auto outline-none border  border-slate-400 rounded-md focus:border-blue-300"
+                className="p-1 mt-5 w-auto  outline-none border  border-slate-400 rounded-md focus:border-blue-300"
                 onChange={(e) => handleChange(e)}
               >
                 {Unit.map((item) => {
@@ -137,7 +137,7 @@ function AddModal({ setModal }) {
                 type="number"
                 placeholder="Opening Stocks"
                 name="stocks"
-                className="p-1 mt-5 outline-none border rounded-md border-slate-400 focus:border-blue-300"
+                className="p-1 mt-5 w-11/12 outline-none border rounded-md border-slate-400 focus:border-blue-300"
                 onChange={(e) => handleChange(e)}
               />
               <button
@@ -146,12 +146,12 @@ function AddModal({ setModal }) {
               >
                 Enable Low Stock Warning?
               </button>
-              {warning && (
+              {lowWarning && (
                 <input
                   type="number"
                   placeholder="Low Stock Units"
                   name="low"
-                  className="  p-1 outline-none border border-slate-400 rounded-md focus:border-blue-300"
+                  className="p-1 w-10/12 mt-2 outline-none border border-slate-400 rounded-md focus:border-blue-300"
                   onChange={(e) => handleChange(e)}
                 />
               )}
@@ -160,7 +160,7 @@ function AddModal({ setModal }) {
         </div>
         <div className="flex justify-end">
           <button
-            className="p-2 border border-red-600 text-red-600 rounded-md mx-1 mb-2"
+            className="p-2  border border-red-600 text-red-600 rounded-md mx-1 mb-2"
             onClick={() => {
               setModal(false);
             }}

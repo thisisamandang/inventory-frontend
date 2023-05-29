@@ -11,7 +11,7 @@ function Header() {
   };
   return (
     <header>
-      <div className="flex flex-col items-center justify-center space-x-2">
+      <div className="flex flex-col fade-on-appear items-center justify-center space-x-2">
         <h1 className="text-2xl text-sky-600 mt-2 mb-1">BOOKS</h1>
       </div>
       {/* <hr /> */}

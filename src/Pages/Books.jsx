@@ -8,7 +8,7 @@ function Books() {
   return (
     <>
       <Header />
-      <div className="flex justify-center items-center mt-10 md:mt-4">
+      <div className="flex fade-on-appear justify-center items-center mt-10 md:mt-4">
         <p className="ml-4 pointer-events-none select-none">
           Inventory
           <MdOutlineInventory className="inline m-2" />

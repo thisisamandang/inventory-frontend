@@ -4,5 +4,6 @@ export const registerRoute = `${host}/api/auth/register`;
 export const loginRoute = `${host}/api/auth/login`;
 export const inventoryRoute = `${host}/api/inventory/additem`;
 export const getInventory = `${host}/api/inventory/getitem`;
+export const getLowStock = `${host}/api/inventory//getLowStock`;
 export const deleteitem = `${host}/api/inventory/deleteitem`;
 export const updateItem = `${host}/api/inventory/updateitem`;
